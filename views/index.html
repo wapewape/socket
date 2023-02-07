@@ -1,0 +1,33 @@
+
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="styles.css">
+		<title>Contador</title>
+	</head>
+<body>
+
+<div class="button-div">
+<p id="buttonCount"></p>
+<a href="#" onclick="buttonClicked()">
+	ENVIA.COM
+</a>
+
+<div id="pedidos" style="visibility: hidden">
+	<p>Se obtuvieron <span id="detalles"></span> Pedidos desde la api</p>
+</div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+	var socket = io.connect();
+		socket.on('buttonUpdate', function(data){
+				document.getElementById("buttonCount").innerHTML = data + ' peticiones';
+		}
+	);
+</script>
+<script src="main.js"></script>
+</body>
+</html>
